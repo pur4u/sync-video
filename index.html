@@ -1,0 +1,530 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Sync Multiple Video - Ovidiu L.</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <!-- jPlayer -->
+    <link href="jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="jplayer/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="jplayer/dist/jplayer/jquery.jplayer.min.js"></script>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        $(document).ready(function () {
+            var nowId = null;
+            $("#jp_container_1").css('display', 'block');
+            $("#jp_container_2").css('display', 'none');
+            $("#jp_container_3").css('display', 'none');
+            $("#jp_container_4").css('display', 'none');
+            $("#jp_container_5").css('display', 'none');
+
+            function disabled(t) {
+                $('.btn-primary').each(function () {
+                    $(this).removeClass('disabled');
+                });
+                t.addClass('disabled');
+            }
+
+            $('.play1').click(function () {
+                currentTime = (nowId != null) ? nowId.data("jPlayer").status.currentTime : 0;
+                if (currentTime == 0) {
+                    $("#jquery_jplayer_1").jPlayer("play", 0);
+                } else {
+                    $("#jquery_jplayer_1").jPlayer("play", currentTime);
+                }
+                $("#jp_container_1").css('display', 'block');
+                $("#jp_container_2").css('display', 'none');
+                $("#jp_container_3").css('display', 'none');
+                $("#jp_container_4").css('display', 'none');
+                $("#jp_container_5").css('display', 'none');
+                disabled($(this));
+            });
+
+            $('.play2').click(function () {
+                currentTime = (nowId != null) ? nowId.data("jPlayer").status.currentTime : 0;
+                if (currentTime == 0) {
+                    $("#jquery_jplayer_2").jPlayer("play", 0);
+                } else {
+                    $("#jquery_jplayer_2").jPlayer("play", currentTime);
+                }
+                $("#jp_container_1").css('display', 'none');
+                $("#jp_container_2").css('display', 'block');
+                $("#jp_container_3").css('display', 'none');
+                $("#jp_container_4").css('display', 'none');
+                $("#jp_container_5").css('display', 'none');
+                disabled($(this));
+            });
+
+            $('.play3').click(function () {
+                currentTime = (nowId != null) ? nowId.data("jPlayer").status.currentTime : 0;
+                if (currentTime == 0) {
+                    $("#jquery_jplayer_3").jPlayer("play", 0);
+                } else {
+                    $("#jquery_jplayer_3").jPlayer("play", currentTime);
+                }
+                $("#jp_container_1").css('display', 'none');
+                $("#jp_container_2").css('display', 'none');
+                $("#jp_container_3").css('display', 'block');
+                $("#jp_container_4").css('display', 'none');
+                $("#jp_container_5").css('display', 'none');
+                disabled($(this));
+            });
+
+            $('.play4').click(function () {
+                currentTime = (nowId != null) ? nowId.data("jPlayer").status.currentTime : 0;
+                if (currentTime == 0) {
+                    $("#jquery_jplayer_4").jPlayer("play", 0);
+                } else {
+                    $("#jquery_jplayer_4").jPlayer("play", currentTime);
+                }
+                $("#jp_container_1").css('display', 'none');
+                $("#jp_container_2").css('display', 'none');
+                $("#jp_container_3").css('display', 'none');
+                $("#jp_container_4").css('display', 'block');
+                $("#jp_container_5").css('display', 'none');
+                disabled($(this));
+            });
+
+            $('.play5').click(function () {
+                currentTime = (nowId != null) ? nowId.data("jPlayer").status.currentTime : 0;
+                if (currentTime == 0) {
+                    $("#jquery_jplayer_5").jPlayer("play", 0);
+                } else {
+                    $("#jquery_jplayer_5").jPlayer("play", currentTime);
+                }
+                $("#jp_container_1").css('display', 'none');
+                $("#jp_container_2").css('display', 'none');
+                $("#jp_container_3").css('display', 'none');
+                $("#jp_container_4").css('display', 'none');
+                $("#jp_container_5").css('display', 'block');
+                disabled($(this));
+            });
+
+
+            $('.play-now').click(function () {
+                if (nowId != null) {
+                    nowId.jPlayer("play");
+                } else {
+                    $("#jquery_jplayer_1").jPlayer("play");
+                }
+            });
+
+            $('.pause-now').click(function () {
+                $.jPlayer.pause();
+            });
+
+            $('.stop-now').click(function () {
+                if (nowId != null) {
+                    nowId.jPlayer("stop");
+                }
+            });
+
+            $('.stop-all').click(function () {
+                $("#jquery_jplayer_1").jPlayer("stop");
+                $("#jquery_jplayer_2").jPlayer("stop");
+                $("#jquery_jplayer_3").jPlayer("stop");
+                $("#jquery_jplayer_4").jPlayer("stop");
+                $("#jquery_jplayer_5").jPlayer("stop");
+            });
+
+            $("#jquery_jplayer_1").jPlayer({
+                ready: function () {
+                    $(this).jPlayer("setMedia", {
+                        title: "Video 1 - Big Buck Bunny Trailer",
+                        m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+                        ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+                        webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm",
+                        poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+                    });
+                },
+                play: function () { // To avoid multiple jPlayers playing together.
+                    $(this).jPlayer("pauseOthers");
+                },
+                swfPath: "jplayer/dist/jplayer",
+                supplied: "webmv, ogv, m4v",
+                globalVolume: true,
+                useStateClassSkin: true,
+                autoBlur: false,
+                smoothPlayBar: true,
+                keyEnabled: true,
+            }).bind($.jPlayer.event.play, function () {
+                nowId = $(this);
+            });
+
+            $("#jquery_jplayer_2").jPlayer({
+                ready: function () {
+                    $(this).jPlayer("setMedia", {
+                        title: "Video 2 - Incredibles Teaser",
+                        m4v: "http://www.jplayer.org/video/m4v/Incredibles_Teaser.m4v",
+                        ogv: "http://www.jplayer.org/video/ogv/Incredibles_Teaser.ogv",
+                        webmv: "http://www.jplayer.org/video/webm/Incredibles_Teaser.webm",
+                        poster: "http://www.jplayer.org/video/poster/Incredibles_Teaser_640x272.png"
+                    });
+                },
+                play: function () { // To avoid multiple jPlayers playing together.
+                    $(this).jPlayer("pauseOthers");
+                },
+                swfPath: "jplayer/dist/jplayer",
+                supplied: "webmv, ogv, m4v",
+                cssSelectorAncestor: "#jp_container_2",
+                globalVolume: true,
+                useStateClassSkin: true,
+                autoBlur: false,
+                smoothPlayBar: true,
+                keyEnabled: true
+            }).bind($.jPlayer.event.play, function () {
+                nowId = $(this);
+            });
+
+            $("#jquery_jplayer_3").jPlayer({
+                ready: function () {
+                    $(this).jPlayer("setMedia", {
+                        title: "Video 3 - Finding Nemo Teaser",
+                        m4v: "http://www.jplayer.org/video/m4v/Finding_Nemo_Teaser.m4v",
+                        ogv: "http://www.jplayer.org/video/ogv/Finding_Nemo_Teaser.ogv",
+                        webmv: "http://www.jplayer.org/video/webm/Finding_Nemo_Teaser.webm",
+                        poster: "http://www.jplayer.org/video/poster/Finding_Nemo_Teaser_640x352.png"
+                    });
+                },
+                play: function () { // To avoid multiple jPlayers playing together.
+                    $(this).jPlayer("pauseOthers");
+                },
+                swfPath: "jplayer/dist/jplayer",
+                supplied: "webmv, ogv, m4v",
+                cssSelectorAncestor: "#jp_container_3",
+                globalVolume: true,
+                useStateClassSkin: true,
+                autoBlur: false,
+                smoothPlayBar: true,
+                keyEnabled: true
+            }).bind($.jPlayer.event.play, function () {
+                nowId = $(this);
+            });
+
+
+            $("#jquery_jplayer_4").jPlayer({
+                ready: function () {
+                    $(this).jPlayer("setMedia", {
+                        title: "Video 4 - HTML5 Video Test",
+                        m4v: "http://easyhtml5video.com/assets/video/new/Penguins_of_Madagascar.m4v",
+                        ogv: "http://easyhtml5video.com/assets/video/new/Penguins_of_Madagascar.ogv",
+                        webmv: "http://easyhtml5video.com/assets/video/new/Penguins_of_Madagascar.webm",
+                        poster: "http://easyhtml5video.com/assets/video/Penguins_of_Madagascar.jpg"
+                    });
+                },
+                play: function () { // To avoid multiple jPlayers playing together.
+                    $(this).jPlayer("pauseOthers");
+                },
+                swfPath: "jplayer/dist/jplayer",
+                supplied: "webmv, ogv, m4v",
+                cssSelectorAncestor: "#jp_container_4",
+                globalVolume: true,
+                useStateClassSkin: true,
+                autoBlur: false,
+                smoothPlayBar: true,
+                keyEnabled: true
+            }).bind($.jPlayer.event.play, function () {
+                nowId = $(this);
+            });
+
+            $("#jquery_jplayer_5").jPlayer({
+                ready: function () {
+                    $(this).jPlayer("setMedia", {
+                        title: "Video 5 - W3 Demo",
+                        m4v: "http://media.w3.org/2010/05/sintel/trailer.mp4",
+                        poster: "http://media.w3.org/2010/05/sintel/poster.png"
+                    });
+                },
+                play: function () { // To avoid multiple jPlayers playing together.
+                    $(this).jPlayer("pauseOthers");
+                },
+                swfPath: "jplayer/dist/jplayer",
+                supplied: "m4v",
+                cssSelectorAncestor: "#jp_container_5",
+                globalVolume: true,
+                useStateClassSkin: true,
+                autoBlur: false,
+                smoothPlayBar: true,
+                keyEnabled: true
+            }).bind($.jPlayer.event.play, function () {
+                nowId = $(this);
+            });
+        });
+        //]]>
+    </script>
+
+
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Begin page content -->
+<div class="container">
+    <div class="page-header">
+        <h1>Sync Multiple Video - Ovidiu L.</h1>
+    </div>
+    <p class="lead">Synchronizes multiple video across time (via jPlayer)</p>
+    <p>Need: <code>HTML5</code> <code>jQuery</code> <code>jPlayer</code></p>
+    <p>Use: <kbd>$(this).data("jPlayer").status.currentTime</kbd></p>
+    <p>Is: <b>free and open source</b></p>
+
+    <br>
+
+    <div class="ovidiul">
+        <div class="btn-group number">
+            <button type="button" class="btn btn-primary play1" aria-label="1">1</button>
+            <button type="button" class="btn btn-primary play2" aria-label="2">2</button>
+            <button type="button" class="btn btn-primary play3" aria-label="3">3</button>
+            <button type="button" class="btn btn-primary play4" aria-label="4">4</button>
+            <button type="button" class="btn btn-primary play5" aria-label="5">5</button>
+            <button type="button" class="btn btn-primary play-now" aria-label="Stop">Play</button>
+            <button type="button" class="btn btn-primary pause-now" aria-label="Stop">Pause</button>
+            <button type="button" class="btn btn-primary stop-now" aria-label="Stop">Stop</button>
+            <button type="button" class="btn btn-primary stop-all" aria-label="Stop">Stop All</button>
+        </div>
+
+        <div id="jp_container_1" class="jp-video jp-video-270p jp_container_1" role="application"
+             aria-label="media player">
+            <div class="jp-type-single">
+                <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+                <div class="jp-gui">
+                    <div class="jp-interface">
+                        <div class="jp-progress">
+                            <div class="jp-seek-bar">
+                                <div class="jp-play-bar"></div>
+                            </div>
+                        </div>
+                        <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                        <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                        <!--<div class="jp-controls-holder">-->
+                        <!--<div class="jp-controls">-->
+                        <!--<button class="jp-play" role="button" tabindex="0">play</button>-->
+                        <!--<button class="jp-stop" role="button" tabindex="0">stop</button>-->
+                        <!--</div>-->
+                        <!--<div class="jp-volume-controls">-->
+                        <!--<button class="jp-mute" role="button" tabindex="0">mute</button>-->
+                        <!--<button class="jp-volume-max" role="button" tabindex="0">max volume</button>-->
+                        <!--<div class="jp-volume-bar">-->
+                        <!--<div class="jp-volume-bar-value"></div>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="jp-toggles">-->
+                        <!--<button class="jp-repeat" role="button" tabindex="0">repeat</button>-->
+                        <!--<button class="jp-full-screen" role="button" tabindex="0">full screen</button>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="jp-details">
+                            <div class="jp-title" aria-label="title">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jp-no-solution">
+                    <span>Update Required</span>
+                    To play the media you will need to either update your browser to a recent version or update
+                    your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                </div>
+            </div>
+        </div>
+
+
+        <div id="jp_container_2" class="jp-video jp-video-270p" role="application" aria-label="media player">
+            <div class="jp-type-single">
+                <div id="jquery_jplayer_2" class="jp-jplayer"></div>
+                <div class="jp-gui">
+                    <div class="jp-interface">
+                        <div class="jp-progress">
+                            <div class="jp-seek-bar">
+                                <div class="jp-play-bar"></div>
+                            </div>
+                        </div>
+                        <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                        <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                        <!--<div class="jp-controls-holder">-->
+                        <!--<div class="jp-controls">-->
+                        <!--<button class="jp-play" role="button" tabindex="0">play</button>-->
+                        <!--<button class="jp-stop" role="button" tabindex="0">stop</button>-->
+                        <!--</div>-->
+                        <!--<div class="jp-volume-controls">-->
+                        <!--<button class="jp-mute" role="button" tabindex="0">mute</button>-->
+                        <!--<button class="jp-volume-max" role="button" tabindex="0">max volume</button>-->
+                        <!--<div class="jp-volume-bar">-->
+                        <!--<div class="jp-volume-bar-value"></div>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="jp-toggles">-->
+                        <!--<button class="jp-repeat" role="button" tabindex="0">repeat</button>-->
+                        <!--<button class="jp-full-screen" role="button" tabindex="0">full screen</button>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="jp-details">
+                            <div class="jp-title" aria-label="title">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jp-no-solution">
+                    <span>Update Required</span>
+                    To play the media you will need to either update your browser to a recent version or update
+                    your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                </div>
+            </div>
+        </div>
+
+
+        <div id="jp_container_3" class="jp-video jp-video-270p" role="application" aria-label="media player">
+            <div class="jp-type-single">
+                <div id="jquery_jplayer_3" class="jp-jplayer"></div>
+                <div class="jp-gui">
+                    <div class="jp-interface">
+                        <div class="jp-progress">
+                            <div class="jp-seek-bar">
+                                <div class="jp-play-bar"></div>
+                            </div>
+                        </div>
+                        <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                        <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                        <!--<div class="jp-controls-holder">-->
+                        <!--<div class="jp-controls">-->
+                        <!--<button class="jp-play" role="button" tabindex="0">play</button>-->
+                        <!--<button class="jp-stop" role="button" tabindex="0">stop</button>-->
+                        <!--</div>-->
+                        <!--<div class="jp-volume-controls">-->
+                        <!--<button class="jp-mute" role="button" tabindex="0">mute</button>-->
+                        <!--<button class="jp-volume-max" role="button" tabindex="0">max volume</button>-->
+                        <!--<div class="jp-volume-bar">-->
+                        <!--<div class="jp-volume-bar-value"></div>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="jp-toggles">-->
+                        <!--<button class="jp-repeat" role="button" tabindex="0">repeat</button>-->
+                        <!--<button class="jp-full-screen" role="button" tabindex="0">full screen</button>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="jp-details">
+                            <div class="jp-title" aria-label="title">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jp-no-solution">
+                    <span>Update Required</span>
+                    To play the media you will need to either update your browser to a recent version or update
+                    your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                </div>
+            </div>
+        </div>
+
+
+        <div id="jp_container_4" class="jp-video jp-video-270p" role="application" aria-label="media player">
+            <div class="jp-type-single">
+                <div id="jquery_jplayer_4" class="jp-jplayer"></div>
+                <div class="jp-gui">
+                    <div class="jp-interface">
+                        <div class="jp-progress">
+                            <div class="jp-seek-bar">
+                                <div class="jp-play-bar"></div>
+                            </div>
+                        </div>
+                        <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                        <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                        <!--<div class="jp-controls-holder">-->
+                        <!--<div class="jp-controls">-->
+                        <!--<button class="jp-play" role="button" tabindex="0">play</button>-->
+                        <!--<button class="jp-stop" role="button" tabindex="0">stop</button>-->
+                        <!--</div>-->
+                        <!--<div class="jp-volume-controls">-->
+                        <!--<button class="jp-mute" role="button" tabindex="0">mute</button>-->
+                        <!--<button class="jp-volume-max" role="button" tabindex="0">max volume</button>-->
+                        <!--<div class="jp-volume-bar">-->
+                        <!--<div class="jp-volume-bar-value"></div>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="jp-toggles">-->
+                        <!--<button class="jp-repeat" role="button" tabindex="0">repeat</button>-->
+                        <!--<button class="jp-full-screen" role="button" tabindex="0">full screen</button>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="jp-details">
+                            <div class="jp-title" aria-label="title">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jp-no-solution">
+                    <span>Update Required</span>
+                    To play the media you will need to either update your browser to a recent version or update
+                    your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                </div>
+            </div>
+        </div>
+
+
+        <div id="jp_container_5" class="jp-video jp-video-270p" role="application" aria-label="media player">
+            <div class="jp-type-single">
+                <div id="jquery_jplayer_5" class="jp-jplayer"></div>
+                <div class="jp-gui">
+                    <div class="jp-interface">
+                        <div class="jp-progress">
+                            <div class="jp-seek-bar">
+                                <div class="jp-play-bar"></div>
+                            </div>
+                        </div>
+                        <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                        <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                        <!--<div class="jp-controls-holder">-->
+                        <!--<div class="jp-controls">-->
+                        <!--<button class="jp-play" role="button" tabindex="0">play</button>-->
+                        <!--<button class="jp-stop" role="button" tabindex="0">stop</button>-->
+                        <!--</div>-->
+                        <!--<div class="jp-volume-controls">-->
+                        <!--<button class="jp-mute" role="button" tabindex="0">mute</button>-->
+                        <!--<button class="jp-volume-max" role="button" tabindex="0">max volume</button>-->
+                        <!--<div class="jp-volume-bar">-->
+                        <!--<div class="jp-volume-bar-value"></div>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="jp-toggles">-->
+                        <!--<button class="jp-repeat" role="button" tabindex="0">repeat</button>-->
+                        <!--<button class="jp-full-screen" role="button" tabindex="0">full screen</button>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="jp-details">
+                            <div class="jp-title" aria-label="title">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jp-no-solution">
+                    <span>Update Required</span>
+                    To play the media you will need to either update your browser to a recent version or update
+                    your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">development by <a href="http://www.pur4u.ro" target="_blank">Ovidiu L.</a> (use <a href="http://www.jplayer.org/" target="_blank">jPlayer</a>)</p>
+    </div>
+</footer>
+
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

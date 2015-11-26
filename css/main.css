@@ -1,0 +1,73 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #EEE !important;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #337AB7;;
+}
+
+.footer a {
+    color: #d9edf7;
+}
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.text-muted {
+    color: #FFF !important;
+}
+
+.page-header {
+    border-bottom: 1px solid #337AB7 !important;
+}
+
+.ovidiul {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.jp-video, .jp-type-single {
+    margin: 0 auto;
+    border: none !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: transparent !important;
+    text-shadow: none;
+    color: #285F8F;
+}
+
+.jp-video .jp-interface {
+    border-top: 1px solid #009be3 !important;
+}
+
+.jp-video {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    margin-left: -240px;
+}
